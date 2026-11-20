@@ -9,7 +9,9 @@ Prerequisites (see SETUP.md):
   docker compose up --build -d web
   out/demo/captures/{before,after}/<page>.png, out/demo/{build-log,tomcat-log,pages-log}.txt, out/demo/runs.json,
   out/paul-demo/a-preview-services.png, out/paul-demo/b-our-numbers-desktop.png
-  KOKORO_MODELS=/path/to/kokoro-models python tools/record_demo.py      (Python with playwright, kokoro-onnx, soundfile, numpy)
+  KOKORO_MODELS=/path/to/kokoro-models caffeinate -dims python tools/record_demo.py   (Python with playwright, kokoro-onnx, soundfile, numpy)
+On macOS, run it under caffeinate as shown: if the Mac sleeps during recording, the browser video gains frames and the
+picture falls behind the narration. The sync check then refuses to save it.
 Set DRY_RUN=1 to rehearse the browser steps with short fixed timings (no narration, no MP4).
 """
 from __future__ import annotations
@@ -350,7 +352,7 @@ class Recorder:
                 ("Server", "Apache Tomcat 11 · Java 17", "Amazon Corretto 17 on Amazon Linux 2023; also tested on Java 21 and 25"),
                 ("Checks", "47 automated tests + CI", "Every page rendered in a real Tomcat 11"),
                 ("Storage", "No database", "Content and its history in Git; form submissions stay in HubSpot"),
-            ], note="Design: the refreshed SecurePay design reviewed in the WordPress pilot, reproduced exactly.")
+            ], note="Design: the refreshed SecurePay design reviewed in the WordPress pilot, with one phone layout fix on Home.")
             return []
         if index == 3:
             self.on_stage(stage_url)
@@ -456,6 +458,27 @@ class Recorder:
         return []
 
 
+def check_sync(video_path: pathlib.Path, scene_starts: list[float], fps: int = 4, tolerance: float = 0.75) -> None:
+    """The browser's video can stall and gain extra frames, which puts the picture behind the narration.
+
+    Each scene changes the chapter label at the top left, so the label must change within `tolerance` seconds of when
+    the scene started. Otherwise the video is not saved.
+    """
+    import numpy as np
+
+    width, height = 150, 15
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(video_path), "-vf",
+                          f"crop=300:30:20:14,fps={fps},scale={width}:{height},format=gray", "-f", "rawvideo", "-"],
+                         capture_output=True, check=True).stdout
+    frames = np.frombuffer(raw, dtype=np.uint8).reshape(-1, width * height).astype(np.int16)
+    changes = [(i + 1) / fps for i, diff in enumerate(np.abs(np.diff(frames, axis=0)).mean(axis=1)) if diff > 6]
+    late = [(n, start) for n, start in enumerate(scene_starts[1:], 2) if not any(abs(c - start) <= tolerance for c in changes)]
+    if late:
+        raise SystemExit("Browser video is out of sync with the narration at scene(s) "
+                         + ", ".join(f"{n} (expected at {start:.1f}s)" for n, start in late) + ": record again.")
+    print(f"Sync check: all {len(scene_starts)} scenes start on time (within {tolerance}s).", flush=True)
+
+
 def main() -> None:
     import numpy as np
     import soundfile as sf
@@ -490,10 +513,12 @@ def main() -> None:
         rec = Recorder(page)
         rec.go(stage_url, wait=300)
         first_scene_at = None
+        scene_starts = []
         for index, (title, narration) in enumerate(SCENES, 1):
             audio, rate, duration = clips[index - 1]
             rec.set_text(chapter=f"{index:02d} / {len(SCENES):02d}  ·  {title}", caption="")
             scene_start = time.monotonic()
+            scene_starts.append(scene_start - video_t0)
             cues = rec.scene(index, stage_url, duration, shots)
             rec.set_text(chapter=f"{index:02d} / {len(SCENES):02d}  ·  {title}", caption="")
             if first_scene_at is None:
@@ -550,6 +575,7 @@ def main() -> None:
         video_path = temp / "demo.webm"
         page.video.save_as(str(video_path))
         browser.close()
+    check_sync(video_path, scene_starts)
 
     OUT.mkdir(parents=True, exist_ok=True)
     wav_path = temp / "voice.wav"
