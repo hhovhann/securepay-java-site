@@ -43,18 +43,19 @@ PAGES = {
 
 SCENES = [
     ("THE GOAL", "The goal: move SecurePay's public website off WordPress and onto your main-site technologies, so the WordPress server can be retired, while Paul can still update the site himself, now by giving an AI plain-English instructions. This pilot is a working version of exactly that."),
-    ("HOW IT IS BUILT", "It keeps the refreshed SecurePay design from the WordPress pilot. Every word, link and image lives in simple content files, one per page. JSP pages lay that content out and Spring MVC serves them. The whole site is one WAR file for Tomcat 11 on Java 17, with no Spring Boot and nothing to install beyond Tomcat."),
+    ("HOW IT IS BUILT", "It keeps the refreshed SecurePay design from the WordPress pilot. Every word, link and image lives in simple content files, one per page. JSP pages lay that content out and Spring MVC serves them. The whole site is one WAR file for Tomcat 11 on Java 17, with no Spring Boot and no database: the content and its history live in Git, and form submissions stay in HubSpot."),
     ("BUILD · TEST · RUN", "One command builds the site on Java 17 and runs forty-seven automated tests. They render every page in a real Tomcat 11 and check every link, image and content field, the security headers and the Guide. Then the WAR is deployed to Tomcat 11 on Amazon Corretto 17, and every page answers."),
-    ("SAME PAGES · HOME", "On the left, the current site. On the right, the Java site, at the same address. All two hundred and five text blocks on the current pages are present, checked automatically, and the page titles, descriptions and social tags match the live site on all seven pages."),
-    ("SAME PAGES · ALL SEVEN", "About Us, Services, Contact Us with the same HubSpot form, Partners, the Privacy Policy and the Terms PDF. Compared screenshot by screenshot with the reviewed design, at laptop and phone widths, the difference is zero. The images now ship with the site, so nothing depends on the WordPress server."),
+    ("SAME PAGES · HOME", "On the left, the current site. On the right, the Java site, at the same address. All two hundred and five text blocks on the current pages are present, word for word, checked automatically, and the page titles, descriptions and social tags match the live site on all seven pages."),
+    ("SAME PAGES · ALL SEVEN", "About Us, Services, Contact Us with the same HubSpot form, Partners, the Privacy Policy and the Terms PDF. Compared screenshot by screenshot, they match the reviewed design, with one fix: on phones and tablets, the payment diagram no longer covers the buttons. The images now ship with the site, so nothing depends on the WordPress server."),
     ("RUNNING ON TOMCAT", "This is the Java site running on Tomcat. The interactive payment workflow, the Services menu, the counting numbers and the hotel-group logos all work as before."),
     ("THE SECUREPAY GUIDE", "The SecurePay Guide is now a small Spring endpoint. It answers from SecurePay's published facts with a link to the source page, removes card numbers before anything is sent, and declines attempts to override its rules. Its facts live in the same content files, so Paul can update them too."),
     ("HOW PAUL UPDATES THE SITE", "Paul asks in plain English, in a GitHub issue or in the Claude app. Claude follows the project's rules and six step-by-step skills. It changes only the content files, never invents wording, builds and tests on Java 17, shows Paul a preview with before and after, and opens the change for approval. Paul approves content changes himself; anything touching code goes to Phil."),
     ("PAUL'S REQUEST · A REAL RUN", "This is a real Claude Code run on this project. Paul asks to show Revenue Assurance before Gateway and APIs on the Services page. Claude picks the right skill, creates a content branch, moves the section and its tab, runs all forty-seven tests, checks the preview, and replies with before and after. It also asks whether the menu should follow, instead of assuming."),
     ("A NEW PAGE, NO CODE", "New pages need no developer. Paul asks for an Our Numbers page with the published numbers and a link in the footer. Claude builds it from the site's ready-made blocks, the tests confirm it, and it appears in the footer and the sitemap. In this demo, both changes stay on their own branches; nothing is published."),
     ("GUARDRAILS", "When a request would mean inventing content, Claude stops. Asked for a Marriott testimonial, it changes nothing, asks for the approved quote and permission, and notes the claim would sit next to the site's Zero Chargebacks. Asked to make the header green, it explains that design is for IT and drafts the request for Phil."),
-    ("PROVEN, NOT PROMISED", "In short: every live text block and search tag carried over, the design matches pixel for pixel, forty-seven tests pass on Java seventeen, twenty-one and twenty-five, and the AI workflow was tried with real requests, including the ones it must refuse."),
-    ("NEXT STEPS", "To take it further, we would confirm which Tomcat and Spring versions your main site runs, where the code should live and who approves content, review it on staging, and then switch over, keeping WordPress as the fallback until you retire it. Thank you for watching."),
+    ("GOING LIVE", "Going live can be fully automatic. Once deployment is connected to your pipeline, Paul's approval merges the change, and the pipeline builds the site, runs every test, and deploys it to staging, then to production, for example on Tomcat behind your AWS load balancer. Rolling back means redeploying the previous version, and there is no database to run or back up."),
+    ("PROVEN, NOT PROMISED", "In short: every live text block and search tag carried over word for word, with the redesign's additions listed for your approval, the design matches the reviewed redesign, forty-seven tests pass on Java seventeen, twenty-one and twenty-five, and the AI workflow was tried with real requests, including the ones it must refuse."),
+    ("NEXT STEPS", "To take it further, we would confirm which Tomcat and Spring versions your main site runs, where the code should live and who approves content, connect the deployment to your pipeline, review it on staging, and then switch over, keeping WordPress as the fallback until you retire it. Thank you for watching."),
 ]
 
 SPOKEN = [
@@ -348,6 +349,7 @@ class Recorder:
                 ("Application", "Spring Framework 7 MVC", "No Spring Boot; one WAR file"),
                 ("Server", "Apache Tomcat 11 · Java 17", "Amazon Corretto 17 on Amazon Linux 2023; also tested on Java 21 and 25"),
                 ("Checks", "47 automated tests + CI", "Every page rendered in a real Tomcat 11"),
+                ("Storage", "No database", "Content and its history in Git; form submissions stay in HubSpot"),
             ], note="Design: the refreshed SecurePay design reviewed in the WordPress pilot, reproduced exactly.")
             return []
         if index == 3:
@@ -422,20 +424,31 @@ class Recorder:
                                    p.evaluate("ms => window.chatScroll(ms)", int(ms * 0.38))))]
         if index == 12:
             self.on_stage(stage_url)
+            self.slide("GOING LIVE", "Approve, and the pipeline does the rest.", steps=[
+                "Paul approves the pull request; the change merges to main",
+                "The pipeline builds the WAR on Java 17 and runs every test",
+                "It deploys to staging, then to production: Tomcat behind your AWS load balancer",
+                "Rollback: redeploy the previous version. No database to run or back up",
+            ], note="To connect to your pipeline (SETUP.md, sections 4 and 6). Every deployment is a complete, tested, versioned copy of the site.")
+            return []
+        if index == 13:
+            self.on_stage(stage_url)
             self.slide("PROVEN, NOT PROMISED", "Checked, not assumed.", headers=("CHECK", "RESULT", "HOW"), table=[
-                ("Live text present", "205 of 205 text blocks", "tools/content_check.py against public.securepay.ae"),
+                ("Live text present", "205 of 205, word for word", "tools/content_check.py against public.securepay.ae"),
+                ("Redesign additions", "70 short pieces, listed", "content_check.py --extra; for SecurePay to approve"),
                 ("Search tags", "7 of 7 pages match", "titles, descriptions, social tags, canonical addresses"),
-                ("Design", "0.00% pixel difference", "7 pages at laptop and phone width vs the reviewed design"),
+                ("Design", "matches the reviewed design", "0.00% at laptop width; phone hero layout fixed"),
                 ("Automated tests", "47 passing", "on Java 17, 21 and 25; pages rendered in Tomcat 11"),
                 ("Real AI runs", "2 changes · 2 refusals", "content files only; nothing invented"),
                 ("Security", "escaped · validated · no cookies", "safe content loading, headers, Guide limits"),
             ])
             return []
-        if index == 13:
+        if index == 14:
             self.on_stage(stage_url)
             self.slide("NEXT STEPS", "From pilot to your codebase.", steps=[
                 "Confirm the Tomcat and Spring versions your main site runs",
                 "Choose where the code lives and who approves content",
+                "Connect deployment to your pipeline: staging, then production",
                 "Review on staging with SecurePay's real forms and analytics",
                 "Switch over, keep WordPress as the fallback, then retire it",
             ], note="Setup: SETUP.md · Paul's guide: PAUL-GUIDE.md · AI rules: CLAUDE.md and .claude/skills/")

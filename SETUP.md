@@ -48,6 +48,7 @@ Migration checks against the current site (run with the site at http://localhost
 
 ```sh
 python3 tools/content_check.py   # every text block on public.securepay.ae is present
+python3 tools/content_check.py --extra   # text on this site that is not on public.securepay.ae (redesign additions)
 python3 tools/seo_check.py       # titles, descriptions, social tags and canonical addresses match
 python3 tools/visual_compare.py [REFERENCE_URL]   # screenshot comparison with a reference copy of the current design
 ```
@@ -74,6 +75,16 @@ python3 tools/visual_compare.py [REFERENCE_URL]   # screenshot comparison with a
 **With the container image:** `docker build -t securepay-website .` produces an image with Amazon Corretto 17, Tomcat 11.0.29 (download checked against Apache's SHA-512) and the WAR as `ROOT.war`, running as a non-root user on port 8080.
 
 **Rollback:** redeploy the previous WAR or image. Content is inside the WAR, so each deployment is a complete, versioned copy of the site.
+
+**On AWS behind an Application Load Balancer** (adjust to SecurePay's own setup):
+
+1. Run the site in one of two ways:
+   - on an existing Tomcat 11 (EC2, Amazon Linux 2023), as above
+   - as the container image, pushed to Amazon ECR and run as an ECS (Fargate) service on port 8080
+2. Put it in its own target group with health check path `/`, which returns 200 only when the content is valid.
+3. Add a listener rule that sends host `public.securepay.ae` to that target group. TLS stays on the load balancer (ACM certificate). Configure `RemoteIpValve` as above. `internalProxies` is a regular expression, not a CIDR range: for a load balancer in 10.0.0.0/16, use `10\.0\.\d{1,3}\.\d{1,3}`.
+4. Rollback: switch the rule back to the WordPress target group, or redeploy the previous WAR or image.
+5. Automatic deployment: after a merge to `main`, the pipeline builds the WAR or image (all tests run). It then deploys to staging and, once approved, to production: copy the WAR, or push the image and update the ECS service.
 
 ## 5. Switching over from WordPress
 
@@ -110,4 +121,5 @@ The content owner (Paul) asks for changes in plain English; Claude follows `CLAU
 | A page shows 404 | The address must end with `/`, and new pages need `layout: "blocks"`. |
 | Preview does not change | `docker compose logs preview` shows why the edit was not loaded. |
 | Forms show "The form could not load" | HubSpot did not load (blocked or offline); the email fallback is shown instead. |
+| Migration checks stop with `CERTIFICATE_VERIFY_FAILED` | Python from python.org on macOS has no certificate bundle. Run its `Install Certificates.command`, or prefix the command with `SSL_CERT_FILE=/etc/ssl/cert.pem`. |
 | Guide says "Please wait a few minutes" | The per-visitor limit (20 questions per 10 minutes) was reached; behind a proxy, configure `RemoteIpValve`. |

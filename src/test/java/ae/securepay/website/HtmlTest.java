@@ -35,6 +35,8 @@ class HtmlTest {
         assertEquals("[click](javascript:alert(1))", Html.text("[click](javascript:alert(1))").replace("&#39;", "'"));
         assertEquals("#", Html.url("javascript:alert(1)"));
         assertEquals("#", Html.url("//evil.example/"));
+        assertEquals("#", Html.url("/\\evil.example/"));
+        assertEquals("#", Html.url("https://securepay.ae\\@evil.example/"));
         assertEquals("#", Html.url("data:text/html,hi"));
         assertEquals("#", Html.url("/../etc/passwd"));
         assertEquals("#", Html.url("http://insecure.example/"));

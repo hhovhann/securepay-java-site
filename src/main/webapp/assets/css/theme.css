@@ -61,3 +61,7 @@ html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--in
 .art-caption{z-index:2;right:1%;bottom:0%;text-align:right;font-size:12px;line-height:1.5}
 .art-caption b{display:inline-block;margin-top:6px;color:#08777c;font-family:Inter,sans-serif;font-size:10px;font-style:normal}
 @media(prefers-reduced-motion:reduce){.flow-path{display:none}}
+/* Home hero: below 1240px the workflow diagram covered the intro text and buttons. Phones and tablets show it under the buttons; small laptops keep the text clear of it. */
+@media(min-width:900.02px) and (max-width:1239.98px){.hero-copy,.hero-actions{max-width:calc(100% - min(53vw,650px) - 16px)}}
+@media(max-width:900px){.hero-grid{min-height:0}.hero-art{position:relative;top:auto;right:auto;margin-top:26px}}
+@media(max-width:600px){.hero-grid>.hero-art{margin-top:6px;margin-bottom:-40px}}
