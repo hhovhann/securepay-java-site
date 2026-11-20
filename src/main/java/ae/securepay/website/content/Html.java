@@ -68,7 +68,8 @@ public final class Html {
 
     /** Allowed link targets: site paths, in-page anchors, https:, mailto: and tel:. */
     public static boolean isAllowedUrl(String url) {
-        if (url == null || url.isBlank() || url.chars().anyMatch(Character::isWhitespace)) {
+        // Browsers read a backslash as a slash, so "/\evil.example" would leave the site like "//evil.example".
+        if (url == null || url.isBlank() || url.chars().anyMatch(Character::isWhitespace) || url.indexOf('\\') >= 0) {
             return false;
         }
         String lower = url.toLowerCase(Locale.ROOT);

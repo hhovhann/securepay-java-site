@@ -58,14 +58,34 @@ Content rules (in `ContentValidator`, run at start-up and in the tests): no HTML
 ## What was migrated, and how it was checked
 
 - **Pages and addresses:** Home, About Us, Services, Contact Us, Partners, Privacy Policy, General Terms & Conditions, at the same paths. `/about-us` redirects to `/about-us/` (301); unknown addresses return a 404 page.
-- **Text:** `tools/content_check.py` compares every text block on the live pages with this site: 205 of 205 present.
+- **Text:** `tools/content_check.py` compares every text block on the live pages with this site: 205 of 205 present, word for word. `tools/content_check.py --extra` checks the other way round and lists text on this site that is not on the live site, footer and email fallback form included: 70 pieces, all from the redesign (see Design).
+  - Home: the payment-workflow diagram and explainer, the SecurePay Guide section and panel, and labels such as "Benefits" and "01 / Bookings".
+  - About Us: fact and card labels such as "Serving hotels since" and "01 / Global".
+  - Contact Us and Partners: the contact line beside each form, and the email fallback form shown if HubSpot cannot load.
+  - Elsewhere: short labels such as "SecurePay Services", "LinkedIn" in the footer, and "SecurePay" above the Terms.
+  - Privacy Policy: none.
+
+  SecurePay approves or removes each addition before go-live; they are in `content/` like all other text.
 - **Search-engine tags:** `tools/seo_check.py`: titles, descriptions, Open Graph/Twitter tags and canonical addresses match the live site on all seven pages. `robots.txt` and `sitemap.xml` are served by the application.
-- **Design:** `tools/visual_compare.py` compares full-page screenshots with the reviewed WordPress theme at laptop (1280px) and phone (390px) widths: 0.00% differing pixels on all seven pages. The phone menu and desktop drop-down were compared item by item.
+- **Design:** the pages use the SecurePay Modern redesign (the WordPress theme pilot), not the current live theme. `tools/visual_compare.py` compares full-page screenshots with that theme running in WordPress at laptop (1280px) and phone (390px) widths: 0.00% differing pixels on all seven pages. The phone menu and desktop drop-down were compared item by item. One deliberate difference since then: below 1240px wide, the home-page workflow diagram covered the intro text and buttons, in the theme as well. On phones and tablets it now sits under the buttons, and on smaller laptops the text keeps clear of it (last rules in `assets/css/theme.css`). Checked with no overlap from 360px to 1920px.
 - **Images:** the page images, logo, icons and social card were copied from the WordPress media library into `assets/img/`, so nothing depends on the WordPress server.
 - **Forms:** the same HubSpot forms (portal 2577418, region na1; Customer Contact `4f64ef09-…`, Partnership `cab91460-…`), with the email fallback if HubSpot cannot load. Forms were not submitted during testing.
 - **Analytics:** the live pages contain the HubSpot WordPress plugin's page-type snippet but load no tracking script, so there was nothing to carry over. Confirm with SecurePay whether tracking should be added.
 
 Before switching over: approve the content and logos, decide redirects for any old WordPress URLs linked from elsewhere (for example files under `/wp-content/uploads/`), point the proxy or load balancer at Tomcat, and keep the WordPress site as the rollback until the new site is confirmed.
+
+## Open points
+
+This is a working pilot built outside SecurePay's systems. To run it as SecurePay's site:
+
+| Open point | Why it matters | What is needed |
+| --- | --- | --- |
+| Where the code lives | The site is meant to rejoin SecurePay's Java codebase. | Either its own repository, or a module or WAR in the main one. `CLAUDE.md` and `.claude/skills/` move with it, and the CODEOWNERS paths are adjusted so Paul still approves only content. |
+| Versions | Spring Framework 7 needs Tomcat 11 (Jakarta Servlet 6.1). | Match the main site: Spring 6.2 for Tomcat 10.1, or Spring 5.3 and `javax` for Tomcat 9 (see Versions and compatibility). |
+| Deployment | CI builds and tests, but nothing deploys yet. | Merge to `main`, then SecurePay's pipeline deploys to staging and then to production (SETUP.md, sections 4 and 6). |
+| Preview Paul can open | The preview runs at `localhost:8082`, which only works on a developer's machine. | Screenshots of the changed pages posted on each pull request, or a staging address. |
+| Approvals | `.github/CODEOWNERS` has placeholder names. | SecurePay's GitHub users or teams. |
+| Content decisions | Some text and claims need SecurePay's confirmation. | Approve or remove the 70 redesign additions (Text, above). Confirm which numbers are current, hotel-group logo permissions, analytics and consent, and redirects for old WordPress addresses. |
 
 ## Security
 
@@ -84,7 +104,12 @@ Before switching over: approve the content and logos, decide redirects for any o
   ```
 
   For Cloudflare, use `remoteIpHeader="cf-connecting-ip"` and list Cloudflare's ranges in `trustedProxies`.
-- **Next steps for production:** a Content-Security-Policy once the HubSpot domains in use are confirmed, and HSTS at the proxy.
+- **Next steps for production:**
+  - a Content-Security-Policy, once the HubSpot domains in use are confirmed
+  - HSTS at the proxy
+  - pin the GitHub Actions to commit SHAs and the Docker base images to digests
+  - turn on branch protection for `main` before the `@claude` workflow is enabled, so the agent can only open pull requests
+  - under a flood from more than 50,000 visitor addresses, the Guide's rate limiter clears its table on each request; put a CDN or WAF rate rule in front if that is a concern
 
 ## Versions and compatibility
 
