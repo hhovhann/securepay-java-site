@@ -23,8 +23,9 @@ html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--in
 .brand-carousel{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);outline:none}
 .brand-track{display:flex;width:max-content;align-items:center;gap:15px;animation:securepay-brand-scroll 58s linear infinite}
 .brand-logo{display:grid;place-items:center;flex:0 0 156px;height:88px;padding:13px 18px;background:#fff;border:1px solid #e4ece8;border-radius:14px;box-shadow:0 6px 22px #102a3108}
-.brand-logo img{display:block;max-width:100%;width:auto;height:auto;max-height:55px;object-fit:contain;filter:grayscale(1);opacity:.74;transition:filter .2s ease,opacity .2s ease,transform .2s ease}
-.brand-logo:hover img,.brand-logo:focus-within img{filter:none;opacity:1;transform:scale(1.04)}
+/* Hotel-group logos in their own colours, as on the live site (the theme showed them grey until pointed at). */
+.brand-logo img{display:block;max-width:100%;width:auto;height:auto;max-height:55px;object-fit:contain;transition:transform .2s ease}
+.brand-logo:hover img,.brand-logo:focus-within img{transform:scale(1.04)}
 .brand-carousel:hover .brand-track,.brand-carousel:focus .brand-track{animation-play-state:paused}
 .client-brand-strip>small{display:block;margin:18px auto 0;max-width:780px;color:var(--muted);font-size:10px}
 @keyframes securepay-brand-scroll{to{transform:translateX(-50%)}}
