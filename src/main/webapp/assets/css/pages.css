@@ -67,3 +67,9 @@
 .site-header .site-nav .nav-panel.is-menu-open{background:#102a31!important;color:#e4efec!important}
 .site-header .site-nav .is-menu-open .nav-submenu{border:0!important;box-shadow:none}
 html.has-modal-open .global-guide-launch{display:none}
+/* Side margins: on phones and tablets the page photo, the service sections and their cards ran to the screen edges. They now keep the page heading's margins: 28px, 18px on phones. Wider screens are unchanged. */
+.source-page-visual{width:min(1240px,calc(100% - 56px))}
+@media(max-width:900px){.service-detail{width:calc(100% - 56px)}}
+@media(max-width:600px){.source-page-visual,.service-detail{width:calc(100% - 36px)}}
+/* Phones: the floating Guide button sat over the copyright line at the end of every page. */
+@media(max-width:600px){.site-footer{padding-bottom:84px}}
