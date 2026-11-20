@@ -1,0 +1,4 @@
+<%@ include file="/WEB-INF/jsp/layout/top.jspf" %>
+<%-- General Terms & Conditions. Text comes from content/pages/general-terms-conditions.yml. --%>
+<main id="main" class="page-shell legal-page layout-constrained"><div class="group alignwide page-intro"><p class="eyebrow">${sp:text(page.intro.eyebrow)}</p><h1>${sp:text(page.intro.title)}</h1></div><div class="alignwide terms-viewer-wrap"><iframe class="terms-viewer" src="${sp:url(page.document.file)}#view=FitH" title="${sp:plain(page.document.viewer_title)}" loading="lazy"></iframe><p class="terms-actions"><a href="${sp:url(page.document.file)}" target="_blank" rel="noopener">${sp:text(page.document.link_label)}</a> <a class="button-link" href="${sp:url(page.document.file)}" download>${sp:text(page.document.download_label)} <span aria-hidden="true">↓</span></a></p></div></main>
+<%@ include file="/WEB-INF/jsp/layout/bottom.jspf" %>

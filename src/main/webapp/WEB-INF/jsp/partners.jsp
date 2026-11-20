@@ -1,0 +1,6 @@
+<%@ include file="/WEB-INF/jsp/layout/top.jspf" %>
+<%-- Partners. Text comes from content/pages/partners.yml. --%>
+<main id="main" class="page-shell partners-page layout-constrained"><div class="group alignwide page-intro"><p class="eyebrow">${sp:text(page.intro.eyebrow)}</p><h1>${sp:text(page.intro.title)}</h1><p class="section-intro">${sp:text(page.intro.text)}</p></div>
+<figure class="source-page-visual partners-page-visual"><img src="${sp:url(page.image.src)}" alt="${sp:plain(page.image.alt)}" loading="lazy"></figure><section class="service-detail"><span>${sp:text(page.categories.eyebrow)}</span><h2>${sp:text(page.categories.title)}</h2><p>${sp:text(page.categories.text)}</p><div class="service-grid partner-grid"><c:forEach items="${page.categories.cards}" var="card"><article class="service-card"><span class="card-index">${sp:text(card.label)}</span><h3>${sp:text(card.title)}</h3><p>${sp:text(card.text)}</p></article></c:forEach></div></section>
+<section class="service-detail"><span>${sp:text(page.enquiry.eyebrow)}</span><p>${sp:text(page.enquiry.text)}</p></section><%@ include file="/WEB-INF/jsp/layout/form-panel.jspf" %></main>
+<%@ include file="/WEB-INF/jsp/layout/bottom.jspf" %>

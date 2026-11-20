@@ -1,0 +1,66 @@
+# Site-wide content: shown on every page (header menu, footer, contact details, search-engine defaults).
+# Text formatting (see CLAUDE.md): a new line becomes a line break, [label](url) becomes a link,
+# ==text== is shown in the teal accent colour. Everything else is shown exactly as written.
+
+name: "SecurePay"
+base_url: "https://public.securepay.ae"
+logo: "/assets/img/securepay-logo.png"
+logo_alt: "SecurePay logo - Leading hotel payments automation company"
+social_image: "/assets/img/securepay-social-card-1200x630.png"
+icon_32: "/assets/img/icon-32.png"
+icon_192: "/assets/img/icon-192.png"
+apple_touch_icon: "/assets/img/icon-180.png"
+
+menu:
+  - label: "About Us"
+    url: "/about-us/"
+  - label: "Services"
+    url: "/services/"
+    children:
+      - label: "Payment Links"
+        url: "/services/#payment-links"
+      - label: "SmartSell Promos"
+        url: "/services/#smartsell"
+      - label: "Gateway & APIs"
+        url: "/services/#gateway-api"
+      - label: "Revenue Assurance"
+        url: "/services/#revenue-assurance"
+  - label: "Contact Us"
+    url: "/contact-us/"
+  - label: "Partners"
+    url: "/partners/"
+
+footer:
+  linkedin_url: "https://www.linkedin.com/company/securepay.ae/"
+  linkedin_label: "LinkedIn"
+  columns:
+    - title: "Quick Links"
+      links:
+        - label: "About Us"
+          url: "/about-us/"
+        - label: "Services"
+          url: "/services/"
+        - label: "Contact Us"
+          url: "/contact-us/"
+        - label: "Privacy Policy"
+          url: "/privacy-policy/"
+        - label: "General Terms & Conditions"
+          url: "/general-terms-conditions/"
+    - title: "Customer Support"
+      links:
+        - label: "Support@securepay.ae"
+          url: "mailto:support@securepay.ae"
+        - label: "+971 58 563 2187"
+          url: "tel:+971585632187"
+    - title: "Sales"
+      links:
+        - label: "Sales@securepay.ae"
+          url: "mailto:sales@securepay.ae"
+      text: "+971 50 478 0251,\n+971 56 790 0854"
+  copyright: "Copyright © Exhilarant Technologies FZCO 2016 – 2026"
+
+not_found:
+  seo_title: "Page not found – SecurePay"
+  eyebrow: "404"
+  title: "Nothing Found"
+  text: "Oops! That page can't be found."

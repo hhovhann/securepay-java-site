@@ -1,0 +1,59 @@
+# Build and check every change: Java 17 build with all tests (content rules included), the WAR running in Tomcat 11,
+# then every page is requested from it. Also confirms the site builds and passes on Java 21 and 25.
+# (tools/content_check.py and tools/seo_check.py compare with the current live site and are for the migration only.)
+name: Build and check
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  java17:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-java@v4
+        with:
+          distribution: corretto
+          java-version: "17"
+          cache: maven
+      - name: Build and test (Java 17)
+        run: ./mvnw -B verify
+      - name: Run in Tomcat 11 (Docker)
+        run: |
+          docker compose up --build -d web
+          for i in $(seq 1 60); do curl -fs http://localhost:8081/ >/dev/null && break; sleep 2; done
+          curl -fs http://localhost:8081/ >/dev/null
+      - name: Every page answers in Tomcat
+        run: |
+          for path in / /about-us/ /services/ /contact-us/ /partners/ /privacy-policy/ /general-terms-conditions/ /robots.txt /sitemap.xml; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "http://localhost:8081$path"); echo "$code $path"; test "$code" = 200
+          done
+      - name: Scope of the change
+        if: github.event_name == 'pull_request'
+        run: |
+          git fetch --no-tags origin "${{ github.base_ref }}"
+          changed=$(git diff --name-only FETCH_HEAD...HEAD)
+          echo "$changed"
+          if echo "$changed" | grep -vqE '^(content/|src/main/webapp/assets/(img|brands)/)'; then
+            echo "::notice::This change touches more than website content, so IT review is required."
+          else
+            echo "::notice::Content-only change."
+          fi
+  compatibility:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: ["21", "25"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: corretto
+          java-version: ${{ matrix.java }}
+          cache: maven
+      - name: Build and test (compiled for Java 17, run on Java ${{ matrix.java }})
+        run: ./mvnw -B verify

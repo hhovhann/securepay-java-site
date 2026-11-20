@@ -1,0 +1,69 @@
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:16px}.contact-card{padding:30px;border-radius:17px;background:#fff;border:1px solid var(--line)}.contact-card h2{font-size:27px;letter-spacing:-.04em;margin:30px 0 10px}.contact-card p{font-size:14px;color:var(--muted);max-width:390px}.contact-email{display:inline-block;color:#08777c;font-weight:700;margin:15px 0}.contact-detail{font-size:12px!important;line-height:1.8}.contact-support{background:#e6efea}.contact-form-note{max-width:720px;font-size:12px;color:var(--muted);margin-top:25px}.about-proof{margin:0 auto 25px}.partner-grid{margin:0 auto 55px}.partner-grid .service-card h3{margin-top:32px}.social-link{display:inline-flex!important;align-items:center;gap:7px;color:#c2d5d1!important;font-size:11px!important;margin-top:7px!important}.social-link svg{width:17px;height:17px;fill:currentColor}.social-link:hover{color:#d5f26a!important}@media(max-width:600px){.contact-layout{grid-template-columns:1fr}.contact-card{padding:22px}}
+.journey-steps .journey-step{appearance:none;text-align:left;color:var(--ink);font:inherit;background:transparent;border:0;border-bottom:2px solid transparent;padding:0 0 14px;cursor:pointer;position:relative;z-index:1}.journey-steps .journey-step>span{display:grid;place-items:center;width:44px;height:44px;background:#e2ebe6;border:1px solid #c7d6cf;border-radius:50%;font-size:12px;font-weight:700;margin-bottom:22px;transition:.18s}.journey-steps .journey-step h3{font-size:17px;margin:0 0 8px}.journey-steps .journey-step p{font-size:13px;color:var(--muted);max-width:220px}.journey-steps .journey-step:hover>span,.journey-steps .journey-step.is-active>span{background:var(--lime);border-color:var(--lime);transform:scale(1.06)}.journey-steps .journey-step.is-active{border-bottom-color:var(--teal)}.journey-detail{display:grid;grid-template-columns:minmax(170px,.4fr) 1fr;gap:18px;align-items:start;margin-top:30px;padding:22px 25px;background:white;border:1px solid var(--line);border-radius:14px;box-shadow:0 12px 40px #102a3108}.journey-detail strong{font-size:14px}.journey-detail p{margin:0;color:#536b70;font-size:14px;line-height:1.7}.journey-step:focus-visible{outline:3px solid var(--teal);outline-offset:5px;border-radius:8px}@media(max-width:600px){.journey-detail{grid-template-columns:1fr;gap:8px}.journey-steps .journey-step>span{margin-bottom:12px}}
+.source-form-preview{margin-top:26px;padding:20px;background:#fff;border:1px solid var(--line);border-radius:14px}.source-form-preview h3{margin:0 0 8px;font-size:18px}.source-form-preview>p{margin:0 0 16px;font-size:12px}.source-form-fields{display:grid;grid-template-columns:1fr 1fr;gap:9px}.source-form-fields label{display:flex;flex-direction:column;gap:6px;color:#536b70;font-size:12px;font-weight:650}.source-form-fields input,.source-form-fields textarea{box-sizing:border-box;width:100%;min-height:44px;padding:11px 12px;border:1px solid #d9e2df;border-radius:7px;background:#fbfcfb;color:var(--ink);font:inherit;font-size:14px}.source-form-fields textarea{min-height:104px;resize:vertical}.source-form-fields .field-wide{grid-column:1/-1}.source-form-fields .email-form-action{display:flex;align-items:center}.email-form-action button{border:0;cursor:pointer}.email-fallback-form{margin-top:18px}@media(max-width:600px){.source-form-fields{grid-template-columns:1fr}}
+.alignwide{width:min(1240px,calc(100% - 56px));margin-inline:auto}
+.legal-copy h2{font-size:clamp(24px,2.4vw,32px);line-height:1.15;letter-spacing:-.04em;margin:38px 0 12px}
+.legal-copy h2:first-child{margin-top:0}
+.legal-page .page-intro{max-width:1240px}
+.legal-page .legal-copy{max-width:850px}
+.legal-page .page-intro h1{font-size:clamp(42px,6vw,76px)}
+.terms-viewer-wrap{max-width:1240px}
+.terms-viewer{display:block;width:100%;height:min(82vh,920px);min-height:650px;border:1px solid var(--line);border-radius:16px;background:#fff}
+.footer-top .social-link{display:inline-flex;align-items:center;gap:7px;color:#c2d5d1;font-size:11px;margin-top:12px}
+.footer-top .social-link svg{width:17px;height:17px;fill:currentColor}
+.source-page-visual{max-width:1240px;margin:0 auto 46px;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:#e6e9e5;box-shadow:0 18px 52px #102a3110}
+.source-page-visual img{display:block;width:100%;aspect-ratio:2.15;object-fit:cover;object-position:center 42%;filter:grayscale(1)}
+.home-page-visual{margin-bottom:55px}
+.partners-page-visual,.services-page-visual,.about-page-visual,.contact-page-visual{margin-top:0}
+@media(max-width:600px){.alignwide{width:calc(100% - 36px)}.terms-viewer{height:75vh;min-height:520px;border-radius:10px}}
+.partners-page-visual,.services-page-visual,.about-page-visual,.contact-page-visual,.privacy-page-visual{margin-top:0}
+.site-header .site-nav .nav-submenu-toggle{color:#e4efec}
+.site-header .site-nav .nav-submenu{background:#102a31!important;border:1px solid #ffffff24!important;border-radius:12px;padding:6px 0;min-width:220px!important;box-shadow:0 18px 40px #0005}
+.site-header .site-nav .nav-submenu .nav-link{color:#e4efec!important;font-size:14px;padding:10px 18px!important}
+.site-header .site-nav .nav-submenu .nav-link:hover{color:var(--lime)!important}
+.hubspot-form-mount{min-height:120px;color:#fff;font-family:inherit}
+.hubspot-form-mount iframe{width:100%!important;max-width:100%!important;border:0}
+.hubspot-form-mount form{color:#fff}
+.hubspot-form-mount fieldset{max-width:100%!important}
+.hubspot-form-mount .hs-form-field{margin:0 0 14px}
+.hubspot-form-mount label{color:#fff!important;font-size:13px;font-weight:600}
+.hubspot-form-mount .hs-input{box-sizing:border-box;width:100%!important;max-width:100%!important;min-height:44px;padding:10px 12px;border:1px solid #cbd6e2;border-radius:3px;background:#f5f8fa;color:#33475b;font:inherit;font-size:15px}
+.hubspot-form-mount textarea.hs-input{min-height:96px}
+.hubspot-form-mount .hs-error-msg,.hubspot-form-mount .hs-form-required{color:#f2545b!important}
+.hubspot-form-mount .hs-button{min-height:44px;padding:11px 28px;border:0;border-radius:3px;background:#fff;color:#0b1015;font:inherit;font-weight:700;cursor:pointer}
+.hubspot-form-mount .hs-button:hover,.hubspot-form-mount .hs-button:focus-visible{background:var(--lime)}
+.hubspot-load-error{margin:0 0 14px;padding:12px 14px;border-radius:8px;background:#ffffff14;color:#d7e3e0;font-size:13px}
+.form-panel .source-form-fields label{color:#fff}
+.form-panel .button-link{background:#fff;color:#0b1015}
+.contact-page .contact-layout{margin-top:10px}
+.terms-actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin:22px 0 0}.terms-actions>a:first-child{color:var(--ink);text-decoration:underline;font-weight:600}
+.form-panel{position:relative;display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:56px;margin:40px auto 0;padding:52px 56px;overflow:hidden;color:#fff;background:radial-gradient(120% 90% at 0% 0%,#0d8c9147 0%,transparent 55%),radial-gradient(80% 70% at 100% 100%,#d5f26a1c 0%,transparent 60%),#102a31;border:1px solid #ffffff1a;border-radius:24px;box-shadow:0 30px 80px #102a3133}
+.form-panel-aside .eyebrow{color:var(--lime)!important;margin-bottom:16px!important}
+.form-panel-aside h2{margin:0 0 30px;color:#fff;font-size:clamp(30px,3.4vw,44px);line-height:1.05;letter-spacing:-.05em}
+.form-panel-contacts{margin:0;display:grid;gap:22px}.form-panel-contacts>div{padding-top:20px;border-top:1px solid #ffffff24}.form-panel-contacts dt{margin:0 0 8px;color:#9bc2bf;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.form-panel-contacts dd{margin:0;display:grid;gap:4px}.form-panel-contacts a{color:#fff;font-size:15px;text-decoration:none}.form-panel-contacts a:first-child{color:var(--lime);font-weight:600}.form-panel-contacts a:hover{text-decoration:underline}
+.form-panel-form{min-width:0;padding:28px 30px;background:#ffffff0d;border:1px solid #ffffff1f;border-radius:18px;backdrop-filter:blur(6px)}
+@media(max-width:860px){.form-panel{grid-template-columns:1fr;gap:28px;padding:30px 20px}.form-panel-form{padding:20px 16px}}
+/* Layout compatibility: keep sections rendering like the reviewed design. */
+*,*::before,*::after{box-sizing:border-box}
+/* The constrained layout caps raw child elements at the 760px content width and centres them; these sections are designed full width. */
+.header-inner.layout-constrained>*,.proof-panel.layout-constrained>*,.journey-section.layout-constrained>*,.cta-band.layout-constrained>*{max-width:none!important;margin-left:0!important;margin-right:0!important}
+.hero-grid.layout-constrained>*{margin-left:0!important;margin-right:0!important}
+.header-inner>.site-logo{margin-right:auto!important}
+.about-proof{width:min(1240px,calc(100% - 56px));max-width:1240px;margin-left:auto!important;margin-right:auto!important}
+.service-grid.benefit-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:860px){.service-grid.benefit-grid{grid-template-columns:1fr}}
+.footer-top>div:not(:first-child)>span{display:block;font-size:12px;line-height:1.7;color:#aec0bd;margin:10px 0}
+/* Rail joins the four step circles (44px circles, 4 columns, 24px gaps). */
+.journey-steps>.journey-rail{top:22px;left:22px;right:auto;width:calc(75% + 18px)}
+/* Original site shows these as three-per-row grids. */
+.service-grid.partner-grid,.about-page .service-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:860px){.service-grid.partner-grid,.about-page .service-grid{grid-template-columns:1fr}}
+/* Some plain-HTML elements carry layout classes; keep them laid out as designed. */
+.service-tabs.layout-constrained>*,.footer-brand.layout-constrained>*,.section-intro.layout-constrained>*,.accent.layout-constrained>*{max-width:none!important;margin-left:0!important;margin-right:0!important;margin-top:0!important}
+.service-tabs{align-items:center}
+.inline-cta{width:min(850px,calc(100% - 36px));margin:35px auto 0!important}
+/* Mobile menu: the header's backdrop-filter made it the containing block for the menu's fixed overlay, squeezing the open menu into the 67px header. The header is opaque, so the blur had no visible effect. The open menu uses the header's dark colours so its links are readable. */
+.site-header{-webkit-backdrop-filter:none;backdrop-filter:none}
+.site-header .site-nav .nav-panel.is-menu-open{background:#102a31!important;color:#e4efec!important}
+.site-header .site-nav .is-menu-open .nav-submenu{border:0!important;box-shadow:none}
+html.has-modal-open .global-guide-launch{display:none}

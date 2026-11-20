@@ -1,0 +1,64 @@
+<%@ page contentType="text/html;charset=UTF-8" session="false" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="sp" uri="/WEB-INF/securepay.tld" %>
+<%-- Shared page top: <head>, skip link and the site header with its menu. Every value is printed through an sp: function. --%>
+<c:set var="seoTitle" value="${slug eq 'not-found' ? site.not_found.seo_title : page.seo.title}" />
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${sp:plain(seoTitle)}</title>
+<c:if test="${slug ne 'not-found'}">
+<meta name="description" content="${sp:plain(page.seo.description)}">
+<meta name="robots" content="max-image-preview:large">
+<link rel="canonical" href="${sp:attr(canonical)}">
+<meta property="og:site_name" content="${sp:plain(site.name)}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="${sp:plain(page.seo.title)}">
+<meta property="og:description" content="${sp:plain(page.seo.description)}">
+<meta property="og:url" content="${sp:attr(canonical)}">
+<meta property="og:image" content="${sp:attr(socialImage)}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${sp:plain(page.seo.title)}">
+<meta name="twitter:description" content="${sp:plain(page.seo.description)}">
+<meta name="twitter:image" content="${sp:attr(socialImage)}">
+</c:if>
+<link rel="icon" href="${sp:url(site.icon_32)}" sizes="32x32">
+<link rel="icon" href="${sp:url(site.icon_192)}" sizes="192x192">
+<link rel="apple-touch-icon" href="${sp:url(site.apple_touch_icon)}">
+<link rel="stylesheet" href="${sp:url('/assets/css/base.css')}">
+<link rel="stylesheet" href="${sp:url('/assets/css/theme.css')}">
+<link rel="stylesheet" href="${sp:url('/assets/css/pages.css')}">
+</head>
+<body class="page-${sp:attr(slug)}">
+<a class="skip-link screen-reader-text" href="#main">Skip to content</a>
+<div class="site-blocks">
+<header class="site-header-part">
+<div class="group alignfull site-header"><div class="group alignwide header-inner layout-constrained">
+<div class="site-logo"><a href="${sp:url('/')}" class="custom-logo-link" rel="home"><img width="164" height="39" src="${sp:url(site.logo)}" class="custom-logo" alt="${sp:plain(site.logo_alt)}"></a></div>
+<nav class="site-nav layout-flex" aria-label="Main menu" data-site-nav>
+<button class="nav-open" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu" data-nav-open><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7.5h16v1.5H4z"></path><path d="M4 15h16v1.5H4z"></path></svg></button>
+<div class="nav-panel" id="site-menu">
+<button class="nav-close" type="button" aria-label="Close menu" data-nav-close><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m13.06 12 6.47-6.47-1.06-1.06L12 10.94 5.53 4.47 4.47 5.53 10.94 12l-6.47 6.47 1.06 1.06L12 13.06l6.47 6.47 1.06-1.06L13.06 12Z"></path></svg></button>
+<ul class="nav-menu">
+<c:forEach items="${site.menu}" var="item">
+<c:choose>
+<c:when test="${not empty item.children}">
+<li class="nav-item has-child" data-nav-submenu><a class="nav-link" href="${sp:url(item.url)}"><span class="nav-label">${sp:text(item.label)}</span></a><button class="nav-submenu-toggle" type="button" aria-expanded="false" aria-label="${sp:plain(item.label)} submenu" data-nav-submenu-toggle><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false"><path d="M1.50002 4L6.00002 8L10.5 4" stroke-width="1.5"></path></svg></button>
+<ul class="nav-submenu">
+<c:forEach items="${item.children}" var="child">
+<li class="nav-item"><a class="nav-link" href="${sp:url(child.url)}"><span class="nav-label">${sp:text(child.label)}</span></a></li>
+</c:forEach>
+</ul></li>
+</c:when>
+<c:otherwise>
+<li class="nav-item"><a class="nav-link" href="${sp:url(item.url)}"><span class="nav-label">${sp:text(item.label)}</span></a></li>
+</c:otherwise>
+</c:choose>
+</c:forEach>
+</ul>
+</div>
+</nav>
+</div></div>
+</header>

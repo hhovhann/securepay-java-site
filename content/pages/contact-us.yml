@@ -1,0 +1,72 @@
+# Contact Us — https://public.securepay.ae/contact-us/
+# Formatting: new line = line break, [label](url) = link, ==text== = teal accent. See CLAUDE.md.
+# The form is SecurePay's existing HubSpot form. Do not change the HubSpot IDs without IT.
+
+seo:
+  title: "Contact Us | SecurePay"
+  description: "Talk to SecurePay about hotel payment automation. Book a demonstration, email sales@securepay.ae or call our Dubai sales team."
+
+intro:
+  eyebrow: "CONTACT US"
+  title: "We’d love to\n==hear from you!=="
+  text: "We would be happy to provide you with a demonstration of our services and illustrate how we can deliver our many benefits. Please complete the form below, email us on [sales@securepay.ae](mailto:sales@securepay.ae) or call us on [+971 50 478 0251](tel:+971504780251) or [+971 56 790 0854](tel:+971567900854)."
+
+image:
+  src: "/assets/img/pages/contact-us.png"
+  alt: "Black-and-white image from SecurePay’s original contact page"
+
+form:
+  key: "contact"
+  eyebrow: "CONTACT US"
+  title: "Customer Contact Form"
+  contacts:
+    - label: "Sales"
+      links:
+        - label: "Sales@securepay.ae"
+          url: "mailto:sales@securepay.ae"
+        - label: "+971 50 478 0251"
+          url: "tel:+971504780251"
+        - label: "+971 56 790 0854"
+          url: "tel:+971567900854"
+    - label: "Customer Support"
+      links:
+        - label: "Support@securepay.ae"
+          url: "mailto:support@securepay.ae"
+        - label: "+971 58 563 2187"
+          url: "tel:+971585632187"
+  hubspot:
+    portal_id: "2577418"
+    form_id: "4f64ef09-c39d-4330-a355-272490ade6f3"
+    region: "na1"
+  # Shown only if the HubSpot form cannot load: opens the visitor's email app with the fields filled in.
+  fallback:
+    message: "The form could not load. Complete the fields below and your email app will open a message to sales@securepay.ae for you to review and send."
+    recipient: "sales@securepay.ae"
+    subject: "Customer Contact Form"
+    submit_label: "Submit by email"
+    fields:
+      - label: "Email *"
+        name: "Email"
+        type: "email"
+        required: true
+        wide: true
+      - label: "Phone number"
+        name: "Phone number"
+        type: "tel"
+      - label: "Hotel / Merchant Name"
+        name: "Hotel / Merchant Name"
+        type: "text"
+      - label: "Country/Region"
+        name: "Country/Region"
+        type: "text"
+      - label: "First Name"
+        name: "First Name"
+        type: "text"
+      - label: "Last Name"
+        name: "Last Name"
+        type: "text"
+      - label: "Message"
+        name: "Message"
+        type: "textarea"
+        wide: true
+  noscript: "Email [sales@securepay.ae](mailto:sales@securepay.ae) or call +971 50 478 0251 / +971 56 790 0854."

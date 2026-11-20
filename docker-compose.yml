@@ -1,0 +1,16 @@
+# Local copy of the SecurePay website on Tomcat 11 / Java 17.
+#   docker compose up --build -d                     → http://localhost:8081  (as it would be deployed)
+#   docker compose --profile preview up --build -d   → http://localhost:8082  (content preview: edits in ./content show on refresh)
+name: securepay-java-site
+services:
+  web:
+    build: .
+    ports: ["127.0.0.1:8081:8080"]
+  preview:
+    build: .
+    profiles: [preview]
+    ports: ["127.0.0.1:8082:8080"]
+    environment:
+      SECUREPAY_CONTENT_DIR: /content
+    volumes:
+      - ./content:/content:ro

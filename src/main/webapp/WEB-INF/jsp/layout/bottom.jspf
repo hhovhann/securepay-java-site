@@ -1,0 +1,28 @@
+<%-- Shared page bottom: footer, SecurePay Guide panel and scripts. --%>
+<footer class="site-footer-part">
+<div class="group alignfull site-footer layout-constrained">
+<div class="group alignwide footer-top">
+<div class="footer-brand layout-constrained">
+<div class="site-logo"><a href="${sp:url('/')}" class="custom-logo-link" rel="home"><img width="164" height="39" src="${sp:url(site.logo)}" class="custom-logo" alt="${sp:plain(site.logo_alt)}" loading="lazy"></a></div>
+<a class="social-link" href="${sp:url(site.footer.linkedin_url)}" target="_blank" rel="noopener noreferrer" aria-label="${sp:plain(site.name)} on ${sp:plain(site.footer.linkedin_label)}">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.44-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.26 2.37 4.26 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.02H3.56V9h3.56v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.23 0Z"/></svg><span>${sp:text(site.footer.linkedin_label)}</span>
+</a>
+</div>
+<c:forEach items="${site.footer.columns}" var="column">
+<div><strong>${sp:text(column.title)}</strong><c:forEach items="${column.links}" var="link"><a href="${sp:url(link.url)}">${sp:text(link.label)}</a></c:forEach><c:if test="${not empty column.text}"><span>${sp:text(column.text)}</span></c:if></div>
+</c:forEach>
+</div>
+<div class="group alignwide footer-bottom layout-flex"><span>${sp:text(site.footer.copyright)}</span></div>
+</div>
+<button class="global-guide-launch" type="button" data-guide-open aria-label="${sp:plain(guide.panel.launch_label)}"><span aria-hidden="true">✳︎</span> ${sp:text(guide.panel.launch_label)}</button>
+<div class="guide-backdrop" data-guide hidden data-endpoint="${sp:url(guideEndpoint)}" data-msg-removed="${sp:attr(guide.messages.removed_sensitive)}" data-msg-refused="${sp:attr(guide.messages.out_of_scope)}" data-msg-unavailable="${sp:attr(guide.messages.unavailable)}"><section class="guide-panel" role="dialog" aria-modal="true" aria-labelledby="guide-title"><header><div class="guide-avatar">S<span>✳︎</span></div><div><strong id="guide-title">${sp:text(guide.panel.title)}</strong><small>${sp:text(guide.panel.subtitle)}</small></div><button class="guide-close" aria-label="${sp:plain(guide.panel.close_label)}" data-guide-close>×</button></header><div class="guide-body" data-guide-messages aria-live="polite"><div class="guide-message guide-assistant">${sp:text(guide.panel.welcome)}</div><div class="guide-suggestions"><c:forEach items="${guide.panel.suggestions}" var="suggestion"><button data-question="${sp:attr(suggestion.question)}">${sp:text(suggestion.label)}</button></c:forEach></div></div><form class="guide-form" data-guide-form><label class="screen-reader-text" for="guide-question">${sp:text(guide.panel.input_label)}</label><input id="guide-question" name="question" autocomplete="off" maxlength="500" placeholder="${sp:plain(guide.panel.placeholder)}"><button aria-label="${sp:plain(guide.panel.send_label)}">↑</button></form><p class="guide-note">${sp:text(guide.panel.note)}</p></section></div>
+</footer>
+</div>
+<script src="${sp:url('/assets/js/site.js')}" defer></script>
+<c:if test="${slug eq 'contact-us' or slug eq 'partners'}">
+<script src="${sp:url('/assets/js/mailto-forms.js')}" defer></script>
+<script src="${sp:url('/assets/js/hubspot-forms.js')}" defer></script>
+<script src="https://js.hsforms.net/forms/embed/v2.js" defer></script>
+</c:if>
+</body>
+</html>

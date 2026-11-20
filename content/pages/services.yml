@@ -1,0 +1,159 @@
+# Services — https://public.securepay.ae/services/
+# Formatting: new line = line break, [label](url) = link, ==text== = teal accent. See CLAUDE.md.
+# Each section's "id" is its web address anchor (/services/#payment-links). Changing an id breaks existing links.
+
+seo:
+  title: "Services: Payment Links, Gateway & APIs | SecurePay"
+  description: "Payment links, SmartSell promotion pages, gateway APIs and revenue assurance for hotels. Automate guest payments and post them straight to your PMS."
+
+intro:
+  eyebrow: "SECUREPAY SERVICES"
+  title: "Pioneering"
+  text: "Our broad range of services take hotel operations to a new level, all whilst reducing manual activity through intelligent automations. SecurePay capabilities cover all revenue generating activities (reservations, sales, F&B, events, activities, well-being) along with core credit control and A/R functions."
+  tabs:
+    - label: "Payment Links"
+      url: "#payment-links"
+    - label: "SmartSell Promotions"
+      url: "#smartsell"
+    - label: "Gateway & APIs"
+      url: "#gateway-api"
+    - label: "Revenue Assurance"
+      url: "#revenue-assurance"
+
+image:
+  src: "/assets/img/pages/services.png"
+  alt: "Black-and-white image from SecurePay’s original services page"
+
+sections:
+  - id: "payment-links"
+    eyebrow: "PAYMENT LINKS"
+    title: "Payment Links"
+    text: "SecurePay enables an extensive range of templated, hotel-branded payment or pre-auth requests (Email / SMS / WhatsApp), each containing secure links to a secure payment page and gateway. These are designed to accommodate the different payment needs across the hotel, employing multiple techniques to maximise payments."
+    groups:
+      - title: "Bookings – Automation"
+        text: "Booking payment request with custom handling for a better guest experience, in line with various hotel booking policies:"
+        points:
+          - "Bookings collected via PMS API, OTA integration or manual creation"
+          - "Handling for advance purchase and flexible bookings"
+          - "Branded, templated message templates eMail, WhatsApp, SMS"
+          - "Request and reminder workflows"
+      - title: "FlexiPay – Travel Agent / B2B / Group"
+        text: "Ease payments collection from travel agents and groups, either through standard or virtual cards:"
+        points:
+          - "Reusable FlexiPay Links can be sent to unlimited recipients"
+          - "Payers can pay any amount, for anything, anytime"
+          - "FlexiPay can also be used for individually paying group members"
+          - "Add FlexiPay links to your B2B invoices"
+      - title: "F&B and Event Payments"
+        text: "Ease the process of getting advance payments for Food and Beverage outlets and Events:"
+        points:
+          - "Branded payment requests with payment links"
+          - "Automated reminder workflows"
+          - "Create by bulk file upload, via the SecurePay portal or API"
+          - "Template customisation by outlet possible"
+      - title: "Other Payments"
+        text: "Any team or department can create requests, to obtain payments, with no restriction on user numbers:"
+        points:
+          - "Each request contains unique team contact details"
+          - "Each team receives only their payment notifications"
+          - "Create by bulk file upload, via the SecurePay portal or API"
+          - "Optional future date/time scheduling and deadlines"
+
+  - id: "smartsell"
+    eyebrow: "SMARTSELL PROMOTIONS"
+    title: "SmartSell Promotions"
+    text: "SmartSell delivers customised landing pages for any promotion, event or F&B outlet. SmartSell provides an immediate call to action, converting interest to bookings, with 3D Secure payments – whilst removing manual work. SmartSell pages have unique URLs, to be shared through your promotional activities (Social, email, SMS, website button)."
+    groups:
+      - title: "F&B Outlets"
+        text: "Create different F&B branded landing pages for:"
+        points:
+          - "Immediate bookings and payments with fixed packages"
+          - "Large scale or recurring F&B events, such as brunches"
+          - "Open amount advance deposits"
+      - title: "Events & Meetings"
+        text: "Create landing pages for large scale event and promotion:"
+        points:
+          - "Gala Dinners and other large scale events"
+          - "Festive events, such as Iftar or Xmas dinners"
+          - "Meeting and conferences with individual bookings and payments"
+      - title: "Product and service sales"
+        text: "Create branded landing pages for the ordering and payment of:"
+        points:
+          - "Hotel merchandise or vouchers"
+          - "Food sale for collection or delivery (e.g. festive goods)"
+          - "Spa, activity, and other services"
+      - title: "Special stay packages and promotion"
+        text: "Reduce channel commissions and secure bookings and payments for:"
+        points:
+          - "Combined stay, F&B, facilities packages"
+          - "Loyalty program member offerings"
+          - "Strategic partner promotional stay packages"
+
+  - id: "gateway-api"
+    eyebrow: "GATEWAY AND APIs"
+    title: "Gateway and APIs"
+    text: "SecurePay provides several APIs that can be consumed by any 3rd party or internally developed applications you may have. These enable immediate seamless payment from those apps, automate immediate payment request messaging workflows or provide payment links for embedding in existing guest communications."
+    groups:
+      - title: "3D Secure Gateway API"
+        text: "Enable seamless 3DS payments from internal and 3rd party apps:"
+        points:
+          - "Use our simple payment gateway to take 3DS payments"
+          - "Integrate any internal or 3rd Party apps"
+          - "Consolidated payment reporting through the SecurePay portal"
+          - "Change acquirer as needed without new gateway integrations"
+      - title: "Booking Automation API"
+        text: "Send us your bookings automatically via our API:"
+        points:
+          - "Suits hotels who have their own PMS integrated middleware"
+          - "Send SecurePay new, cancelled and modified bookings"
+          - "SecurePay automates payment requests based on policies"
+          - "Successful payment responses sent via API"
+      - title: "Remote Creation API"
+        text: "3rd Party apps can create payment requests automatically:"
+        points:
+          - "SecurePay automatically sends payment request with links; or"
+          - "Provides links for embedding in current guest communications"
+          - "Useful for such applications as guest communication systems"
+          - "Successful payment responses sent via API"
+      - title: "Custom Integrations"
+        text: "Customised integrations are possible and can be discussed on a project by project basis:"
+        points:
+          - "New payment gateways"
+          - "New booking sources"
+          - "New transaction sources"
+          - "New promotional systems"
+
+  - id: "revenue-assurance"
+    eyebrow: "REVENUE ASSURANCE"
+    title: "Revenue Assurance"
+    text: "We provide a broad range of revenue assurance and protection capabilities. Simply put, when revenue is earned, it must be received and protected from chargeback or fraud losses. This must also be achieved whilst minimising unnecessary transaction rejections from genuine payers. Fraudsters will look for easier targets elsewhere."
+    groups:
+      - title: "Chargeback Avoidance"
+        text: "Any transaction can be disputed, however minimising disputes is the goal, through:"
+        points:
+          - "Reduced manual POS key-in transactions through higher online payments"
+          - "Proper acceptance of booking policies at payment time"
+          - "Remove any legitimate chargeback possibilities"
+      - title: "Fraud Avoidance"
+        text: "3D Secure payments can be subject to fraud. Fraud avoidance techniques include:"
+        points:
+          - "Correct risk rule configuration, without unnecessary rejections"
+          - "Automated notification and reporting of suspicious payment attempts"
+          - "Automated recommendations for manual completion of safe transactions"
+      - title: "PayMatch Reconciliations"
+        text: "With our PayMatch solution, reconcile revenues and costs through:"
+        points:
+          - "Automated reconciliation between PMS and settlement statements"
+          - "Reconciliation of expected and actual cash deposits"
+          - "Reconciliation of expected and actual channel commissions"
+      - title: "Dispute Defence"
+        text: "In the rare event of a cardholder dispute, we ensure no chargeback loss by:"
+        points:
+          - "Providing defence consultancy"
+          - "Delivering necessary defence documentation"
+          - "Monitoring defence activities of your acquirer"
+
+cta:
+  title: "Want a Demo?"
+  link_label: "Contact us ↗︎"
+  url: "/contact-us/"

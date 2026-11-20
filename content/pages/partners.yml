@@ -1,0 +1,88 @@
+# Partners — https://public.securepay.ae/partners/
+# Formatting: new line = line break, [label](url) = link, ==text== = teal accent. See CLAUDE.md.
+# The form is SecurePay's existing HubSpot form. Do not change the HubSpot IDs without IT.
+
+seo:
+  title: "Partners | SecurePay"
+  description: "Partner with SecurePay. We work with companies providing complementary solutions and services to the global hospitality market."
+
+intro:
+  eyebrow: "PARTNERS"
+  title: "Partner Lounge"
+  text: "We welcome partnership enquiries from like-minded companies who provide complimentary solutions or services to the global hospitality market."
+
+image:
+  src: "/assets/img/pages/partners.png"
+  alt: "Black-and-white image from SecurePay’s original partners page"
+
+categories:
+  eyebrow: "PARTNERSHIP CATEGORIES"
+  title: "Partnership Categories"
+  text: "Potential partners may wish to pursue solutions integration to deliver a broader, cohesive hospitality offering and explore co-selling opportunities, or may be leading global acquirers or PSPs."
+  cards:
+    - label: "01"
+      title: "Payment Services"
+      text: "We integrate with multiple leading payment gateway vendors, with regional or global reach, already serving many hospitality clients. SecurePay’s services would enhance overall service offerings."
+    - label: "02"
+      title: "Integrated Solutions"
+      text: "Use our API connectors to enhance payment your system’s capabilities. This eases complex payment gateway integration, especially in markets where local integrations are necessary."
+    - label: "03"
+      title: "Acquirers / PSPs"
+      text: "We already work with a large number of acquirers in different markets (often informally). Working with SecurePay can provide high levels of ‘stickiness’ for your hospitality merchants."
+
+enquiry:
+  eyebrow: "START A PARTNERSHIP ENQUIRY"
+  text: "Please complete the form below, email us on [partnerships@securepay.ae](mailto:partnerships@securepay.ae) or call us on +971 50 478 0251 or +971 56 790 0854."
+
+form:
+  key: "partnership"
+  eyebrow: "PARTNERS"
+  title: "Partnership Contact Form"
+  contacts:
+    - label: "Partnerships"
+      links:
+        - label: "partnerships@securepay.ae"
+          url: "mailto:partnerships@securepay.ae"
+        - label: "+971 50 478 0251"
+          url: "tel:+971504780251"
+        - label: "+971 56 790 0854"
+          url: "tel:+971567900854"
+  hubspot:
+    portal_id: "2577418"
+    form_id: "cab91460-edb3-4855-bab3-420185d2730a"
+    region: "na1"
+  fallback:
+    message: "The form could not load. Complete the fields below and your email app will open a message to partnerships@securepay.ae for you to review and send."
+    recipient: "partnerships@securepay.ae"
+    subject: "Partnership Contact Form"
+    submit_label: "Submit by email"
+    fields:
+      - label: "Email *"
+        name: "Email"
+        type: "email"
+        required: true
+        wide: true
+      - label: "Phone number"
+        name: "Phone number"
+        type: "tel"
+      - label: "Company name"
+        name: "Company name"
+        type: "text"
+      - label: "Country/Region"
+        name: "Country/Region"
+        type: "text"
+      - label: "First Name"
+        name: "First Name"
+        type: "text"
+      - label: "Last Name"
+        name: "Last Name"
+        type: "text"
+      - label: "Partner Type"
+        name: "Partner Type"
+        type: "text"
+        wide: true
+      - label: "Message"
+        name: "Message"
+        type: "textarea"
+        wide: true
+  noscript: "Email [partnerships@securepay.ae](mailto:partnerships@securepay.ae) to enquire."

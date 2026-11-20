@@ -1,0 +1,53 @@
+# About Us — https://public.securepay.ae/about-us/
+# Formatting: new line = line break, [label](url) = link, ==text== = teal accent. See CLAUDE.md.
+
+seo:
+  title: "About Us | SecurePay"
+  description: "SecurePay is Dubai-based payment software built only for hotels. Since 2016 we have served major hotel groups and independent luxury properties."
+
+intro:
+  eyebrow: "ABOUT US"
+  title: "Born in\n==the UAE=="
+  text: "Headquartered in Dubai, UAE, we focus only on hospitality, and strive to meet the individual requirements of our customers. Since 2016, we have grown to provide services to most major global hotel operating companies, along with leading independent luxury hotels. We count among our customers a full range of 3 to 7 star properties."
+
+image:
+  src: "/assets/img/pages/about-us.png"
+  alt: "Black-and-white image from SecurePay’s original about page"
+
+facts:
+  - value: "2016"
+    label: "Serving hotels since"
+  - value: "Dubai, UAE"
+    label: "Headquarters"
+  - value: "3–7 star"
+    label: "Customer range"
+  - value: "Global"
+    label: "Operations"
+
+why:
+  eyebrow: "ABOUT US"
+  title: "Why Work With Us?"
+  cards:
+    - label: "01 / GLOBAL"
+      title: "Global"
+      text: "SecurePay operates globally through a network of payment gateways, complementing hotel operators’ approved payment strategies."
+    - label: "02 / INDEPENDENT"
+      title: "Independent"
+      text: "SecurePay is independent and processes transactions through a hotels preferred acquirer or Payment Service Provider (PSP)."
+    - label: "03 / EVOLVING"
+      title: "Evolving"
+      text: "Our services never remain static. We are constantly adding new capabilities in responses to our customers evolving needs."
+    - label: "04 / SERVICE"
+      title: "Great Service"
+      text: "At SecurePay we are committed to the delivery of the very best levels of customer support to both you and your guests."
+    - label: "05 / SECURE & AVAILABLE"
+      title: "Secure/Available"
+      text: "Our services are delivered within a high security / high availability architecture utilising the very best in cloud technologies."
+    - label: "06 / PRIVACY"
+      title: "Privacy / PCI-DSS"
+      text: "We ensure that your PCI and privacy legislation requirements are maintained, through our own compliance."
+
+cta:
+  title: "Want a Demo?"
+  link_label: "Contact us ↗︎"
+  url: "/contact-us/"

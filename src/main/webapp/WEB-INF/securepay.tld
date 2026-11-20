@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Functions the JSP pages use to show content safely. Every value from content/*.yml goes through one of these. -->
+<taglib xmlns="https://jakarta.ee/xml/ns/jakartaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-jsptaglibrary_3_0.xsd"
+        version="3.0">
+  <tlib-version>1.0</tlib-version>
+  <short-name>sp</short-name>
+  <function>
+    <description>Formatted text: escaped, with [label](url) links, ==accent== and line breaks.</description>
+    <name>text</name>
+    <function-class>ae.securepay.website.content.Html</function-class>
+    <function-signature>java.lang.String text(java.lang.Object)</function-signature>
+  </function>
+  <function>
+    <description>Plain escaped text for titles, attributes and meta tags (formatting marks removed).</description>
+    <name>plain</name>
+    <function-class>ae.securepay.website.content.Html</function-class>
+    <function-signature>java.lang.String plain(java.lang.Object)</function-signature>
+  </function>
+  <function>
+    <description>Escaped attribute value.</description>
+    <name>attr</name>
+    <function-class>ae.securepay.website.content.Html</function-class>
+    <function-signature>java.lang.String attr(java.lang.Object)</function-signature>
+  </function>
+  <function>
+    <description>Safe link target (site path, #anchor, https:, mailto:, tel:); anything else becomes "#".</description>
+    <name>url</name>
+    <function-class>ae.securepay.website.content.Html</function-class>
+    <function-signature>java.lang.String url(java.lang.Object)</function-signature>
+  </function>
+</taglib>

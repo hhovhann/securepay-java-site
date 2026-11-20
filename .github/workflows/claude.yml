@@ -1,0 +1,31 @@
+# Lets the content owner request website changes by mentioning @claude in an issue or comment.
+# Claude follows CLAUDE.md and the skills in .claude/skills/, and opens a pull request for review.
+# Setup: install the Claude GitHub app on the repository and add the ANTHROPIC_API_KEY secret.
+# Check the input names against the claude-code-action README for the version you install.
+name: Claude website requests
+on:
+  issues:
+    types: [opened, assigned]
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+jobs:
+  claude:
+    if: contains(github.event.comment.body || github.event.issue.body || '', '@claude')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: corretto
+          java-version: "17"
+          cache: maven
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}

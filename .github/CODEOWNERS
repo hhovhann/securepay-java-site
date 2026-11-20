@@ -1,0 +1,10 @@
+# Who must approve changes (enable "Require review from Code Owners" on the main branch).
+# Replace the placeholder team names with SecurePay's GitHub users or teams.
+
+# Everything (code, build, deployment) needs IT review.
+*                                @securepay-it-placeholder
+
+# Website text and images can be approved by the content owner.
+/content/                        @securepay-content-placeholder
+/src/main/webapp/assets/img/     @securepay-content-placeholder
+/src/main/webapp/assets/brands/  @securepay-content-placeholder

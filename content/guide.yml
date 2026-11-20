@@ -1,0 +1,65 @@
+# SecurePay Guide: what the chat panel says, and the published facts it answers from.
+# Each topic lists the words visitors may use (matched as whole words) and the approved public text it answers with.
+# Only add facts that appear on SecurePay's published pages, and link each topic to that page.
+
+panel:
+  launch_label: "Ask the SecurePay Guide"
+  title: "SecurePay Guide"
+  subtitle: "Product information, with sources"
+  close_label: "Close assistant"
+  welcome: "Hello. I can explain SecurePay’s public services, hotel workflows and partnerships. What would you like to understand?"
+  suggestions:
+    - label: "Payment links"
+      question: "How do payment links work for hotel bookings?"
+    - label: "Acquirer choice"
+      question: "Can we keep our existing acquirer?"
+    - label: "PMS integrations"
+      question: "How does SecurePay connect to a PMS?"
+    - label: "SmartSell"
+      question: "What is SmartSell used for?"
+  input_label: "Ask about SecurePay services"
+  placeholder: "Ask about SecurePay…"
+  send_label: "Send question"
+  note: "Public product information only. Never share card details or booking data."
+
+messages:
+  removed_sensitive: "I removed that message without sending or displaying its contents. Please don’t share card numbers, security codes, booking references or account details here."
+  sensitive: "For your safety, do not share card numbers, security codes, booking references, passwords or account details here. Contact SecurePay through its official channel for account-specific help."
+  out_of_scope: "I can only help with SecurePay’s published hotel payment services, integrations, company information and partnerships. Ask a question about one of those topics and I’ll point you to the source."
+  no_answer: "I don’t have a verified answer to that from SecurePay’s published product information. I can help with payment links, SmartSell, integrations, revenue assurance or partnerships. For a specific setup, please contact the SecurePay team."
+  invalid: "Ask a question using 1 to 500 characters."
+  rate_limited: "Please wait a few minutes before asking another question."
+  origin_blocked: "Request origin not allowed."
+  unavailable: "The SecurePay Guide is temporarily unavailable. Please try again later or contact the team."
+
+topics:
+  - id: links
+    label: "Payment Links"
+    url: "/services/#payment-links"
+    terms: ["payment link", "payment request", "booking", "reservation", "advance payment", "preauth", "pre-auth", "preauthorisation", "pre-authorization", "reminder", "whatsapp", "sms", "email", "flexipay", "travel agent", "b2b", "group", "bulk upload", "department"]
+    text: "Payment Links supports hotel-branded payment or pre-authorisation requests sent by email, SMS or WhatsApp, with secure links to a payment page and gateway. Booking inputs can come through a PMS API, OTA integration or manual creation; workflows can handle advance-purchase and flexible bookings with branded messages and reminders. FlexiPay reusable links can be sent to unlimited recipients, allow any amount, can be used by individual group members and added to B2B invoices. F&B and event requests can be created by bulk upload, SecurePay portal or API, with outlet template customisation. Other hotel teams can create requests with unique team contact details and team-specific notifications; optional scheduling and deadlines are available. Payment posting to a PMS via API is described on the site."
+  - id: smart
+    label: "SmartSell Promotions"
+    url: "/services/#smartsell"
+    terms: ["smartsell", "smart sell", "promotion", "offer", "event", "restaurant", "food", "beverage", "f&b", "dining", "experience", "package", "landing page", "brunch", "iftar", "christmas", "xmas", "voucher", "spa", "loyalty"]
+    text: "SmartSell delivers customised landing pages for promotions, events and F&B outlets, with unique URLs shared through social media, email, SMS or a website button. It supports F&B fixed packages, recurring events such as brunches and open-amount deposits; gala dinners, festive events such as Iftar or Christmas, and meetings/conferences with individual bookings and payments; hotel merchandise or vouchers, food for collection or delivery, spa and activities; and combined stay, F&B and facilities packages, loyalty-member offerings and strategic partner stay packages. SecurePay describes 3D Secure payments on these pages."
+  - id: gateway
+    label: "Gateway & APIs"
+    url: "/services/#gateway-api"
+    terms: ["acquirer", "psp", "payment service provider", "gateway", "api", "integrate", "integration", "pms", "3ds", "3-d secure", "three d secure", "settle", "settlement", "third party", "booking automation", "remote creation", "custom integration"]
+    text: "SecurePay provides a 3D Secure Gateway API for internal and third-party apps, consolidated payment reporting through the SecurePay portal, and changing acquirers without new gateway integrations. The Booking Automation API accepts new, cancelled and modified bookings, automates payment requests based on policies and returns successful payment responses. The Remote Creation API lets third-party apps create requests; SecurePay can send the payment link or provide it for existing guest communications, then return successful payment responses. Custom integrations can be discussed project by project for new gateways, booking sources, transaction sources and promotional systems."
+  - id: assurance
+    label: "Revenue Assurance"
+    url: "/services/#revenue-assurance"
+    terms: ["fraud", "chargeback", "dispute", "reconciliation", "reconcile", "commission", "revenue assurance", "settlement matching", "paymatch", "pos", "risk rule", "defence", "defense"]
+    text: "SecurePay describes revenue assurance as receiving earned revenue, protecting it from chargeback or fraud losses, and minimising unnecessary rejections of genuine payers. Chargeback avoidance includes reducing manual POS key-ins through online payments and capturing booking-policy acceptance at payment. Fraud avoidance includes risk-rule configuration, suspicious-attempt notifications and reporting, and recommendations for manual completion of safe transactions. PayMatch reconciles PMS and settlement statements, expected and actual cash deposits, and expected and actual channel commissions. Dispute defence includes consultancy, defence documentation and monitoring the acquirer’s defence activities. It cannot assess a specific transaction or dispute."
+  - id: about
+    label: "About SecurePay"
+    url: "/about-us/"
+    terms: ["securepay", "company", "who are you", "what do you do", "hotel", "hospitality", "rooms", "global", "since", "experience", "services", "platform", "payment software", "dubai", "uae", "privacy", "pci"]
+    text: "SecurePay says it was born in the UAE, is headquartered in Dubai, and has focused on hospitality since 2016. Its published site says it serves major global hotel operating companies and independent luxury hotels, with customers ranging from 3 to 7-star. SecurePay describes global gateway reach, acquirer/PSP independence, customer-led capability development, support, and highly secure and available cloud architecture."
+  - id: partners
+    label: "Partner information"
+    url: "/partners/"
+    terms: ["partner", "partnership", "integrator", "integration partner", "become a partner", "acquirer partner", "psp partner", "co-sell", "co sell"]
+    text: "SecurePay welcomes partnership enquiries from companies with complementary hospitality-market services. Its categories are payment services, integrated solutions, and acquirers/PSPs. The site describes broader cohesive hospitality offerings and co-selling, gateway-vendor integrations, API connectors for payment systems and local integrations, and existing work with acquirers in different markets. Contact partnerships@securepay.ae or +971 50 478 0251 / +971 56 790 0854."

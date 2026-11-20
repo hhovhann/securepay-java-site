@@ -1,0 +1,16 @@
+# General Terms & Conditions — https://public.securepay.ae/general-terms-conditions/
+# The terms are SecurePay's supplied PDF. Replace the PDF only with a version approved by SecurePay.
+
+seo:
+  title: "General Terms & Conditions | SecurePay"
+  description: "The general terms and conditions that apply to SecurePay's payment software and services."
+
+intro:
+  eyebrow: "SECUREPAY"
+  title: "General Terms ==& Conditions=="
+
+document:
+  file: "/assets/legal/SecurePay-Terms-Conditions-Apr-2021-Dubai-Courts.pdf"
+  viewer_title: "SecurePay Terms & Conditions PDF viewer"
+  link_label: "SecurePay Terms & Conditions"
+  download_label: "Download"
